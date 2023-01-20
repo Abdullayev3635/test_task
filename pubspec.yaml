@@ -35,6 +35,9 @@ dependencies:
   # Json
   json_serializable: ^6.6.0
 
+  #slidable
+  flutter_slidable: ^1.2.0
+
   # Value equality
   equatable: ^2.0.3
 

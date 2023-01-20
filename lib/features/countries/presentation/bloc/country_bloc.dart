@@ -18,6 +18,7 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
   CountryBloc({required this.usesCountry}) : super(CountryInitial()) {
     on<GetCountryEvent>(getCountry, transformer: sequential());
     on<SearchCountryEvent>(searchCountry, transformer: sequential());
+    on<RemoveCountryEvent>(removeCountry, transformer: sequential());
   }
 
   List<CountryEntity> listNew = [];
@@ -63,5 +64,11 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
         return titleLower.contains(searchLower);
       }).toList()));
     }
+  }
+
+  FutureOr<void> removeCountry(
+      RemoveCountryEvent event, Emitter<CountryState> emit) {
+    listOld.remove(event.countryEntity);
+    emit(CountryLoadedSuccess(list: listOld));
   }
 }

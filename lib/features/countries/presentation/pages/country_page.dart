@@ -106,7 +106,7 @@ class _CountryPageState extends State<CountryPage> {
                         ),
                       ),
                     ),
-                    Expanded(child: CountryItems(list: state.list)),
+                    Expanded(child: CountryItems(list: state.list, bloc: _countryBloc)),
                   ],
                 ));
           } else if (state is CountryLoading) {

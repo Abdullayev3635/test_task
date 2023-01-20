@@ -15,3 +15,9 @@ class SearchCountryEvent extends CountryEvent {
 
   SearchCountryEvent({required this.text});
 }
+
+class RemoveCountryEvent extends CountryEvent {
+  final CountryEntity countryEntity;
+
+  RemoveCountryEvent({required this.countryEntity});
+}
