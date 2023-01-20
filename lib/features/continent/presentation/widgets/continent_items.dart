@@ -23,8 +23,8 @@ class ContinentItems extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) =>
-                    CountryPage.screen(list[index].code ?? ""),
+                builder: (context) => CountryPage.screen(
+                    list[index].code ?? "", list[index].name ?? ""),
               ),
             );
           },

@@ -36,6 +36,11 @@ class CountryRepository implements CountryRepositoryImpl {
     } else {
       try {
         final models = localDatasource.getCountry();
+        models.where((element) {
+          final continentLower = element.continent!.code!.toLowerCase();
+          final codeLower = code.toLowerCase();
+          return codeLower == continentLower;
+        }).toList();
         final entities =
             models.map<CountryEntity>((e) => e.toEntity()).toList();
         return Right(entities);

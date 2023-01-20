@@ -7,17 +7,19 @@ import 'package:uic_task/features/countries/presentation/widgets/app_bar.dart';
 import '../../../../di/dependency_injection.dart';
 import '../widgets/country_items.dart';
 import '../widgets/country_shimmer_widget.dart';
-import '../widgets/text_field_widget.dart';
 
 class CountryPage extends StatefulWidget {
-  const CountryPage({Key? key, required this.code}) : super(key: key);
+  const CountryPage({Key? key, required this.code, required this.name})
+      : super(key: key);
   final String code;
+  final String name;
 
-  static Widget screen(String code) => BlocProvider(
+  static Widget screen(String code, String name) => BlocProvider(
         create: (context) =>
             di<CountryBloc>()..add(GetCountryEvent(page: 1, code: code)),
         child: CountryPage(
           code: code,
+          name: name,
         ),
       );
 
@@ -42,7 +44,9 @@ class _CountryPageState extends State<CountryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: cBackgroundColor,
-      appBar: const MyAppBar(),
+      appBar: MyAppBar(
+        name: widget.name,
+      ),
       body: BlocBuilder<CountryBloc, CountryState>(
         builder: (context, state) {
           if (state is CountryLoadedSuccess) {

@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:uic_task/features/continent/data/modal/continent_model.dart';
-
 import '../../../../core/utils/graphql_query.dart';
 import '../modal/country_model.dart';
 
@@ -16,18 +14,19 @@ class CountryRemoteDatasourceImpl extends CountryRemoteDatasource {
 
   @override
   Future<List<CountryModel>> getCountry(int page, String code) async {
+    List<CountryModel> list = [];
     try {
       final result = await _client.query(QueryOptions(
         document: gql(GqlQuery.countriesQuery),
-        variables: {"code": code},
       ));
       if (result.data == null) {
         return [];
       }
-      return result.data?['countries']
+      list = result.data?['countries']
           .map((e) => CountryModel.fromJson(e))
           .cast<CountryModel>()
           .toList();
+      return list;
     } on Exception catch (exception) {
       debugPrint(exception.toString());
       return [];

@@ -14,6 +14,9 @@ CountryModel _$CountryModelFromJson(Map<String, dynamic> json) => CountryModel(
       name: json['name'] as String?,
       native: json['native'] as String?,
       phone: json['phone'] as String?,
+      continent: json['continent'] == null
+          ? null
+          : ContinentModel.fromJson(json['continent'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CountryModelToJson(CountryModel instance) =>
@@ -25,4 +28,5 @@ Map<String, dynamic> _$CountryModelToJson(CountryModel instance) =>
       'name': instance.name,
       'native': instance.native,
       'phone': instance.phone,
+      'continent': instance.continent,
     };

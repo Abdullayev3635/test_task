@@ -1,4 +1,7 @@
 import 'package:equatable/equatable.dart';
+import 'package:uic_task/features/continent/data/modal/continent_model.dart';
+
+import '../../data/modal/country_model.dart';
 
 class CountryEntity extends Equatable {
   const CountryEntity({
@@ -9,6 +12,7 @@ class CountryEntity extends Equatable {
     required this.name,
     required this.native,
     required this.phone,
+    required this.continent,
   });
 
   final String? code;
@@ -18,6 +22,7 @@ class CountryEntity extends Equatable {
   final String? name;
   final String? native;
   final String? phone;
+  final ContinentModel? continent;
 
   @override
   List<Object> get props => [code!];

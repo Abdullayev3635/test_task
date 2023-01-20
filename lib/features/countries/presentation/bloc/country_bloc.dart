@@ -40,9 +40,13 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
                 }
             },
         (r) => {
-              emit(CountryLoadedSuccess(list: r)),
-              listNew.addAll(r),
-              listOld.addAll(r)
+              listNew.addAll(r.where((element) {
+                final continentLower = element.continent!.code!.toLowerCase();
+                final codeLower = event.code.toLowerCase();
+                return codeLower.contains(continentLower);
+              }).toList()),
+              listOld.addAll(listNew),
+              emit(CountryLoadedSuccess(list: listNew)),
             });
   }
 

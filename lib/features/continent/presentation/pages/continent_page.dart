@@ -51,7 +51,6 @@ class _ContinentState extends State<Continent> {
             );
           } else if (state is ContinentLoadedFailure) {
             return Center(
-
               child: Text(state.message,
                   style:
                       const TextStyle(fontSize: 20, color: Color(0xff939EB4))),

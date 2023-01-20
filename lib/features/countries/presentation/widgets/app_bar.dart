@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:uic_task/core/utils/app_constants.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const MyAppBar({Key? key}) : super(key: key);
+  const MyAppBar({Key? key, required this.name}) : super(key: key);
+
+  final String name;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
               Text(
-                'Countries List',
+                name,
                 style: Theme.of(context)
                     .textTheme
                     .headline6!

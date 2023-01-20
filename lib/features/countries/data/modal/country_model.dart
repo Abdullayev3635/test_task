@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../continent/data/modal/continent_model.dart';
 import '../../domain/entities/country_entity.dart';
 
 part 'country_model.g.dart';
@@ -13,6 +14,7 @@ class CountryModel {
   String? name;
   String? native;
   String? phone;
+  ContinentModel? continent;
 
   CountryModel(
       {this.code,
@@ -21,7 +23,8 @@ class CountryModel {
       this.emojiU,
       this.name,
       this.native,
-      this.phone});
+      this.phone,
+      this.continent});
 
   factory CountryModel.fromJson(Map<String, dynamic> json) =>
       _$CountryModelFromJson(json);
@@ -37,5 +40,6 @@ extension CountryModelX on CountryModel {
       emojiU: emojiU,
       name: name,
       native: native,
+      continent: continent,
       phone: phone);
 }
